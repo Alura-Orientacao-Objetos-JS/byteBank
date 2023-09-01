@@ -1,37 +1,26 @@
-// class Client {
-//     name
-//     cpf
-//     rg
+import { Client } from "./Cliente.js";
+import { ContaCorrente } from "./ContaCorrente.js";
 
-//     constructor(name, cpf, rg){
-//         this.name = name
-//         this.cpf = cpf
-//         this.rg = rg
-//     }
-// }
+const murilo = new Client('Murilo', 12345678900, 123456789)
+const muriloContaCorrente = new ContaCorrente(1001, murilo)
 
-class ContaCorrente {
-    agency
-    // #saldo = 0
-    _sale = 0
+console.log(murilo)
+console.log(muriloContaCorrente)
 
-    sacar(valor){
-        if(this._sale >= valor){
-            return this._sale -= valor
-        }
-    }
+const valorDepositado = muriloContaCorrente.depositar(100)
+console.log(`Você depositou R$${valorDepositado}`)
+const valorSacado = muriloContaCorrente.sacar(50)
+console.log(`Você sacou R$${valorSacado}`)
 
-    depositar(valor){
-        if(valor <= 0) return 
-        this._sale += valor
-    }
-}
 
-const contaCorrente = new ContaCorrente()
-contaCorrente.agency = 1001
+const jose = new Client('José', 99876543211, 98765432)
+const joseContaCorrente = new ContaCorrente(2002, jose)
 
-contaCorrente.depositar(60)
-const valorSacado = contaCorrente.sacar(50)
+joseContaCorrente.depositar(500)
 
-console.log(valorSacado)
-// console.log(contaCorrente)
+let valor = 200
+joseContaCorrente.transferir(valor, muriloContaCorrente)
+
+console.log(`Valor: ${valor}`)
+console.log(muriloContaCorrente)
+console.log(joseContaCorrente)
