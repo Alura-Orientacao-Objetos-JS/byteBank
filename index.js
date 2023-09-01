@@ -1,19 +1,37 @@
-class Client {
-    name
-    cpf
-    agency
-    balance
-    rg
+// class Client {
+//     name
+//     cpf
+//     rg
 
-    constructor(name, cpf, agency, balance, rg){
-        this.name = name
-        this.cpf = cpf
-        this.agency = agency
-        this.balance = balance
-        this.rg = rg
+//     constructor(name, cpf, rg){
+//         this.name = name
+//         this.cpf = cpf
+//         this.rg = rg
+//     }
+// }
+
+class ContaCorrente {
+    agency
+    // #saldo = 0
+    _sale = 0
+
+    sacar(valor){
+        if(this._sale >= valor){
+            return this._sale -= valor
+        }
+    }
+
+    depositar(valor){
+        if(valor <= 0) return 
+        this._sale += valor
     }
 }
 
-const client1 = new Client('Murilo', 98458904238, 4234, 4234, 1542641432)
-const client2 = new Client('Alice', 56546234534, 543543, 5432534, 54637829348576)
-console.log(client1, client2)
+const contaCorrente = new ContaCorrente()
+contaCorrente.agency = 1001
+
+contaCorrente.depositar(60)
+const valorSacado = contaCorrente.sacar(50)
+
+console.log(valorSacado)
+// console.log(contaCorrente)
