@@ -1,10 +1,9 @@
 import { Client } from "./Cliente.js"
 
 export class ContaCorrente{
+    static accounts = 0
     agency
     #client
-    
-    // #saldo = 0
     #sale = 0
     
     set client(newValue){
@@ -25,22 +24,23 @@ export class ContaCorrente{
     constructor(agency, client){
         this.agency = agency
         this.#client = client
+        ContaCorrente.accounts += 1
     }
 
-    sacar(valor){
-        if(this.#sale >= valor) {
-            return this.#sale -= valor
+    sacar(value){
+        if(this.#sale >= value) {
+            return this.#sale -= value
         }
         
     }
 
-    depositar(valor){
-        if(valor <= 0) return 
-        return this.#sale += valor
+    depositar(value){
+        if(value <= 0) return 
+        return this.#sale += value
     }
 
-    transferir(valor, conta){
-        const valorSacado = this.sacar(valor)
-        conta.depositar(valorSacado)
+    transferir(value, conta){
+        const newSale = this.sacar(value)
+        conta.depositar(newSale)
     }
 }
