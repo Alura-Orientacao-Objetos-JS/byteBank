@@ -10,5 +10,3 @@ joseContaCorrente.depositar(500)
 
 let valor = 200
 joseContaCorrente.transferir(valor, muriloContaCorrente)
-
-console.log(ContaCorrente.accounts)
