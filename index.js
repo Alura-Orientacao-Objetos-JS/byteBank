@@ -22,5 +22,5 @@ let valor = 200
 joseContaCorrente.transferir(valor, muriloContaCorrente)
 
 console.log(`Valor: ${valor}`)
-console.log(muriloContaCorrente)
-console.log(joseContaCorrente)
+console.log(muriloContaCorrente.sale)
+console.log(joseContaCorrente.sale)
