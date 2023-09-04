@@ -1,9 +1,7 @@
-export class Client {
-    name
+export class Client{
     #cpf
-
     get cpf(){
-        return this.#cpf
+        return this.#cpf;
     }
 
     constructor(name, cpf){
