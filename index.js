@@ -1,15 +1,14 @@
-import { Client } from "./Cliente.js";
-import { ContaCorrente } from "./ContaCorrente.js";
-import { ContaPoupanca } from "./ContaPoupanca.js";
+import { Client } from "./Cliente.js"
+import { ContaCorrente } from "./ContaCorrente.js"
+import { ContaPoupanca } from "./ContaPoupanca.js"
+import { ContaSalario } from "./ContaSalario.js"
 
 const murilo = new Client('Murilo', 12345678900)
 
 const muriloContaCorrente = new ContaCorrente(murilo, 2002)
-muriloContaCorrente.depositar(200)
-muriloContaCorrente.sacar(100)
+const muriloContaPoupanca = new ContaPoupanca(20, murilo, 2002)
+const muriloContaSalario = new ContaSalario(murilo)
+muriloContaSalario.depositar(100)
+muriloContaSalario.sacar(50)
 
-const contaPoupanca = new ContaPoupanca(200, murilo, 2002)
-contaPoupanca.sacar(100)
-
-console.log(muriloContaCorrente)
-console.log(contaPoupanca)
+console.log(muriloContaSalario)

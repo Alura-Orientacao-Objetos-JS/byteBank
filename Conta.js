@@ -1,51 +1,54 @@
 export class Account{
     _sale
-    #client
+    _client
     agency
 
     constructor(saleInit, client, agency) {
-        this._sale = saleInit;
-        this.#client = client;
-        this.agency = agency;
+        if(this.constructor == Account){
+            throw new Error("Você não deveria instanciar um objeto do tipo Conta, pois ela é uma classe abstrata")
+        }
+        this._sale = saleInit
+        this._client = client
+        this.agency = agency
     }
 
     set client(newValue) {
         if (newValue instanceof Client) {
-            this.#client = newValue;
+            this._client = newValue
         }
     }
 
     get client() {
-        return this.#client;
+        return this._client
     }
 
     get _sale() {
-        return this._sale;
+        return this._sale
     }
 
-    sacar(value) {
-        let tax = 1
-        return this._sacar(value, tax)
+    // Método Abstrato
+    sacar(value){
+        throw new Error("O método sacar da conta é abstrato")
     }
 
     _sacar(value, tax){
         const newValue = tax * value;
         if (this._sale >= newValue) {
-            this._sale -= newValue;
-            return newValue;
+            this._sale -= newValue
+            return newValue
         }
         return 0
     }
 
     depositar(value) {
-        if (value <= 100) {
-            return;
+        if (value  <= 0) {
+            return
         }
-        this._sale += value;
+        this._sale += value
     }
     
     transferir(value, conta) {     
-        const newValue = this.sacar(value);
-        conta.depositar(newValue);
+        const newValue = this.sacar(value)
+        conta.depositar(newValue)
     }
 }
