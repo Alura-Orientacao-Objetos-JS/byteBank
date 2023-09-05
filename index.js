@@ -8,10 +8,10 @@ diretor.registerPassword(123456)
 const gerente = new Gerente("Marina", 7000, 98765432100)
 gerente.registerPassword(90909)
 
-const Augusto = new Client("Augusto", 56789012344, 987650)
+const augusto = new Client("Augusto", 56789012344, 987650)
 
 const gerenteLogin = authSystem.login(gerente, 90909)
 const diretorLogin = authSystem.login(diretor, 123456)
-const augustoLogin = authSystem.login(Augusto, 987650)
+const augustoLogin = authSystem.login(augusto, 987650)
 
 console.log(gerenteLogin, diretorLogin, augustoLogin)
