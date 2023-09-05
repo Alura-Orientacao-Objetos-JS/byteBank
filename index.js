@@ -1,14 +1,17 @@
 import { Client } from "./Cliente.js"
-import { ContaCorrente } from "./ContaCorrente.js"
-import { ContaPoupanca } from "./ContaPoupanca.js"
-import { ContaSalario } from "./ContaSalario.js"
+import { Gerente } from "./Funcionarios/Gerente.js"
+import { Diretor } from "./Funcionarios/Diretor.js"
+import { authSystem } from "./SistemaAutenticacao.js"
 
-const murilo = new Client('Murilo', 12345678900)
+const diretor = new Diretor("Murilo", 10000, 12345678900)
+diretor.registerPassword(123456)
+const gerente = new Gerente("Marina", 7000, 98765432100)
+gerente.registerPassword(90909)
 
-const muriloContaCorrente = new ContaCorrente(murilo, 2002)
-const muriloContaPoupanca = new ContaPoupanca(20, murilo, 2002)
-const muriloContaSalario = new ContaSalario(murilo)
-muriloContaSalario.depositar(100)
-muriloContaSalario.sacar(50)
+const Augusto = new Client("Augusto", 56789012344, 987650)
 
-console.log(muriloContaSalario)
+const gerenteLogin = authSystem.login(gerente, 90909)
+const diretorLogin = authSystem.login(diretor, 123456)
+const augustoLogin = authSystem.login(Augusto, 987650)
+
+console.log(gerenteLogin, diretorLogin, augustoLogin)
